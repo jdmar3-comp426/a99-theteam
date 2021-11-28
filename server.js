@@ -28,10 +28,15 @@ app.post("/app/new/", (req, res) => {
 	const info = stmt.run(req.body.user, md5(req.body.pass));
 	res.status(201).json({"message" : info.changes + " record created: ID " + info.lastInsertRowid + " (201)"});
 });
+app.post("/app/new/score", (req, res) => {
+	const stmt = db.prepare("INSERT INTO scores (user_id, score) VALUES (?, ?)");
+	const info = stmt.run(req.body.user_id, req.body.score);
+	res.status(201).json({"message" : info.changes + " record created: ID " + info.lastInsertRowid + " (201)"});
+});
 
 // READ a list of all users (HTTP method GET) at endpoint /app/users/
 app.get("/app/users", (req, res) => {	
-	const stmt = db.prepare("SELECT * FROM userinfo").all();
+	const stmt = db.prepare("SELECT * FROM scores").all();
 	res.status(200).json(stmt);
 });
 
