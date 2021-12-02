@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
 
-  <title>LOGIN</title>
+        <title>Login</title>
+      
+        <link rel="stylesheet" href="signup.css">
+    </head>
+    <body>
+        <h1>Login</h1>
 
-</head>
-<body>
-    <h2>Login failed. Please try again.</h2> 
-    <form id="login" action="/login" method="post">
-        <h3>Please Enter Username and Password</h3>
-        <div class="username">
-            <label id="username">Username:</label>
-            <input required id="username" type="text" name="username" placeholder="Username"></br>
+        <form id = "form" action="/login" method="post">
+            <label>Username: <input type="text" size = 29 id ="username" name="username">  </label>    
+            <label>Password: <input type="password" size =30 id ="password" name="password"> </label>
+            <p class="wrongentry">We did not find a match for this username and password, maybe this isn't the game for you. Try again.</p>
+         <div class="buttonleft">
+            <button type="submit" class="buttons">Login</button>
+         </form>
+            <a href="signup.html"><button type="button" class="buttons">Signup</button></a>
         </div>
-        <div class="password">
-            <label id="password">Password: </label>
-            <input required id="password" type="password" placeholder="Password" name="password"></br>
-        </div>
-        <input type="submit" name="submit" value="Enter" class="searchbutton">
-    </form>
+
+
+    </body>
+</html>

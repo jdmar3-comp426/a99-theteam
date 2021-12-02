@@ -39,7 +39,7 @@ app.get('/', function(req, res){
 		console.log(req.session.user)
 		res.redirect('/index')
 	}else{
-		res.sendFile(__dirname + '/views/login.html')
+		res.sendFile(__dirname + '/views/homestarter.html')
 	}
 
 })
