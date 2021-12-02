@@ -102,6 +102,10 @@ app.get('/index', function (req, res){
 	}
 })
 
+app.get('/profile', function (req, res){
+	res.sendFile(__dirname + "/views/profile.html")
+})
+
 // READ (HTTP method GET) at root endpoint /app/
 app.get("/app/", (req, res, next) => {
     res.json({"message":"Your API works! (200)"});

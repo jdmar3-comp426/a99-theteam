@@ -16,7 +16,7 @@ if (row === undefined) {
     const sqlInit = `
         CREATE TABLE userinfo ( id INTEGER PRIMARY KEY, user TEXT, pass TEXT );
         CREATE TABLE scores (id INTEGER PRIMARY KEY, user_id INTEGER, score TEXT, FOREIGN KEY(user_id) REFERENCES userinfo(id));
-        INSERT INTO userinfo (user, pass) VALUES ('admin','bdc87b9c894da5168059e00ebffb9077'), ('test','9241818c20435c6672dac2c4b6e6c071');
+        INSERT INTO userinfo (user, pass) VALUES ('admin','21232f297a57a5a743894a0e4a801fc3'), ('test','9241818c20435c6672dac2c4b6e6c071');
 
     `;
 // Execute SQL commands that we just wrote above.
