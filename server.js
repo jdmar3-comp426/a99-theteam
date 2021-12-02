@@ -66,7 +66,7 @@ app.post('/login', function (req, res){
 		
 
 	}else{
-		res.redirect('/')
+		res.sendFile(__dirname + "/views/failed_login.html")
 	}
 	
 })
@@ -99,7 +99,12 @@ app.get('/index', function (req, res){
 })
 
 app.get('/profile', function (req, res){
-	res.sendFile(__dirname + "/views/profile.html")
+	if(req.session.user){
+		res.sendFile(__dirname + "/views/profile.html")
+	}else{
+		res.redirect('/')
+	}
+	
 })
 
 // READ (HTTP method GET) at root endpoint /app/
