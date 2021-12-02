@@ -109,7 +109,7 @@ app.get('/profile', function (req, res){
 
 app.get('/leaderboard', function (req, res){
 	if(req.session.user){
-		res.sendFile(__dirname + "/leaderboard.html")
+		res.sendFile(__dirname + "/views/leaderboard.html")
 	}else{
 		res.redirect('/')
 	}
