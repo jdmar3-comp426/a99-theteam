@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let user = fetch("http://localhost:3000/app/user/")
+                .then(response => response.json())
+                .then(data => document.getElementById("name").innerHTML = data["user"]);
+        })
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
@@ -38,7 +45,7 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td>Name:</td>
+                            <td id="name">Name:</td>
                             <td>PLACE USERNAME HERE</td>
                         </tr>
                         <tr>

@@ -34,9 +34,9 @@ app.use(session({
 }))
 
 app.get('/', function(req, res){
-	console.log(req.session.user)
+	// console.log(req.session.user)
 	if(req.session.user){
-		console.log(req.session.user)
+		// console.log(req.session.user)
 		res.redirect('/index')
 	}else{
 		res.sendFile(__dirname + '/views/login.html')
@@ -158,5 +158,10 @@ app.delete("/app/delete/user/:id", (req, res) => {
 	const stmt = db.prepare("DELETE FROM userinfo WHERE id = ?");
 	const info = stmt.run(req.params.id);
 	res.status(200).json({"message" : info.changes+ " record deleted: ID " + req.params.id + " (200)"});
+});
+app.get('/app/user/', (req, res) => {	
+	const stmt = db.prepare("SELECT * FROM userinfo WHERE id=?");
+	const out = stmt.get(req.session.user["id"]);
+	res.status(200).json(out);
 });
 
