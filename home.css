@@ -1,0 +1,32 @@
+button {
+    margin-left: 3.5vw;
+    float:left;
+}
+.buttons {
+    border: 1px solid wheat;
+    color: wheat;
+    background-color: tomato;
+    padding: 10px 30px;
+    font-size: 20px;
+    font-family: 'Copperplate', fantasy;
+    }
+
+body {
+    background-color: #39CCCC;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 5vh;
+    margin-top: 1vh;
+    font-family: 'Copperplate', fantasy;
+}
+
+.homebuttons {
+    margin: 25vh auto;
+    width: 400px;
+    padding:100px;
+
+    background-color: darkorange;
+    box-shadow: 10px 10px chocolate, -1em -1em lightsalmon;
+}

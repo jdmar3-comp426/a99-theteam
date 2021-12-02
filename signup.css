@@ -14,6 +14,7 @@ form{
     padding:100px;
 
     background-color: darkorange;
+    box-shadow: 10px 10px chocolate, -1em -1em lightsalmon;
 }
 
 input[type = "text"]{
@@ -50,9 +51,13 @@ button{
     color: black;
 }
 
-.buttonright {
-    float:left;
-}
 .buttonleft {
     float: left;
+}
+
+.wrongentry {
+    color:chocolate;
+    font-family: 'Copperplate', fantasy;
+    text-shadow: 1px 1px 1px black;
+    text-align: center;
 }
