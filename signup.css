@@ -1,0 +1,27 @@
+
+body{
+    background: darkolivegreen;
+}
+form{
+    margin: 0 auto;
+    width: 400px;
+    padding:100px;
+
+    background-color: darkorange;
+}
+
+input[type = "text"]{
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+label{
+    display: block;
+    margin-bottom: 50px;
+}
+
+
+button{
+    margin-left: 150px;
+}
+
