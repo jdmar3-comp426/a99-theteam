@@ -151,3 +151,8 @@ app.delete("/app/delete/user/:id", (req, res) => {
 	res.status(200).json({"message" : info.changes+ " record deleted: ID " + req.params.id + " (200)"});
 });
 
+app.get('/app/user/', (req, res) => {	
+	const stmt = db.prepare("SELECT * FROM userinfo WHERE id=?");
+	const out = stmt.get(req.session.user["id"]);
+	res.status(200).json(out);
+});
