@@ -1,7 +1,13 @@
 
 body{
-    background: darkolivegreen;
+    background: #39CCCC;
 }
+
+h1 {
+    text-align: center;
+    font-family: 'Copperplate', fantasy;
+}
+
 form{
     margin: 0 auto;
     width: 400px;
@@ -18,10 +24,35 @@ input[type = "text"]{
 label{
     display: block;
     margin-bottom: 50px;
+    font-family: 'Copperplate', fantasy;
 }
 
 
 button{
-    margin-left: 150px;
+    margin-left: 5vw;
 }
 
+.signupbutton {
+    margin-left: 5vw;
+}
+
+.buttons {
+    border: 1px solid wheat;
+    color: wheat;
+    background-color: #39CCCC;
+    padding: 8px 16px;
+    font-size: 20px;
+    font-family: 'Copperplate', fantasy;
+}
+
+.buttons:hover {
+    background-color: aquamarine;
+    color: black;
+}
+
+.buttonright {
+    float:left;
+}
+.buttonleft {
+    float: left;
+}
