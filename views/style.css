@@ -17,7 +17,7 @@
   
 .reset{
   margin-left: 45%;
-  margin-top:15%;
+  margin-top:18%;
   padding: 10px 20px;
   border-radius: 29px;
   border-color:transparent;
@@ -30,7 +30,7 @@
 }
 
   .board {
-    width: 400px;
+    width: 500px;
     height: 400px;
     display: flex;
     flex-wrap: wrap;
@@ -39,4 +39,9 @@
     /*Center the board here */
     top: 5%;
     left: 35%;
+  }
+ 
+  img{ /* Adding border and spacing on cards*/
+    border: 1px solid pink;
+    padding: 1px;
   }

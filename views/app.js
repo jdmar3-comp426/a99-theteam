@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
  
 
   /******** Establishing Timer ***************** */
-  const starting_minutes = 3
+  const starting_minutes = 0
 
   let time = starting_minutes * 60 // Total Seconds for our Timer
 
@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
    }
 
    timer.innerHTML = `${minutes}:${seconds}`
-   time --;
+   time ++;
 
-   if(time == -1){ // Stop the clock and signal the user lost, also disable all cards
+   if(time == 121){ // Stop the clock and signal the user lost, also disable all cards
      clearInterval(x)
     document.body.style.background = 'FireBrick'
 
@@ -363,7 +363,7 @@ function flipcard(){
   this.setAttribute('src', deckofcards[cardId].img) // Will set the image of card we clicked immediately to the id of card we selected
 
   if(TwoCardsSelected.length == 2){
-    setTimeout(check_for_match, 700)
+    setTimeout(check_for_match, 250) // Changing this line of code fixed bugging.
   }
 }
 
