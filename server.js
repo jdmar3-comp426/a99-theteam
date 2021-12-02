@@ -5,16 +5,103 @@ var app = express();
 var db = require("./database.js");
 // Require md5 MODULE
 var md5 = require("md5");
+
+//require Sessions module
+
+var session = require('express-session');
+
 // Make Express use its own built-in body parser
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Set server port
-var HTTP_PORT = 5000;
+var HTTP_PORT = 3000;
 // Start server
 app.listen(HTTP_PORT, () => {
     console.log("Server running on port %PORT%".replace("%PORT%",HTTP_PORT))
 });
+
+app.use(session({
+	secret: 'secret',
+	resave: false,
+	saveUninitialized: false,
+	cookie : {secure : false, maxAge: 100000},
+
+}))
+
+// app.use(function(req, res, next){
+// 	var err = req.session.error;
+// 	var msg = req.session.success;
+// 	delete req.session.error;
+// 	delete req.session.success;
+// 	res.locals.message = '';
+// 	if (err) res.locals.message = '<p class="msg error">' + err + '</p>';
+// 	if (msg) res.locals.message = '<p class="msg success">' + msg + '</p>';
+// 	next();
+//   });
+
+app.get('/', function(req, res){
+	console.log(req.session.user)
+	if(req.session.user){
+		console.log(req.session.user)
+		res.redirect('/index')
+	}else{
+		res.sendFile(__dirname + '/views/login.html')
+	}
+
+})
+
+app.use(express.static('views'));
+
+app.post('/login', function (req, res){
+	let username = req.body.username
+	let password = req.body.password
+
+	const stmt = db.prepare("SELECT * FROM userinfo WHERE user = ? AND pass = ?")
+	const out = stmt.get(username, md5(password))
+
+	if(out != undefined){
+		console.log("SUCCESS");
+		req.session.regenerate( function() {
+			req.session.user = out
+			res.redirect('/')
+			
+		})
+		
+
+	}else{
+		res.redirect('/')
+	}
+	
+})
+
+app.post('/create_account', function (req, res){
+	let username = req.body.username
+	let password = md5(req.body.password)
+	
+	const stmt = db.prepare("INSERT INTO userinfo (user, pass) VALUES (?, ?)");
+	const info = stmt.run(username, password);
+
+	session.user = info.lastInsertRowid
+	res.redirect('/')
+})
+
+app.get('/logout', function (req, res){
+	req.session.destroy(function(){
+		res.redirect('/')
+
+	})
+})
+
+
+app.get('/index', function (req, res){
+	if(req.session.user){
+		res.sendFile(__dirname + "/views/index.html")
+	}else{
+		res.redirect('/')
+	}
+})
+
 // READ (HTTP method GET) at root endpoint /app/
 app.get("/app/", (req, res, next) => {
     res.json({"message":"Your API works! (200)"});
@@ -36,7 +123,7 @@ app.post("/app/new/score", (req, res) => {
 
 // READ a list of all users (HTTP method GET) at endpoint /app/users/
 app.get("/app/users", (req, res) => {	
-	const stmt = db.prepare("SELECT * FROM scores").all();
+	const stmt = db.prepare("SELECT * FROM userinfo").all();
 	res.status(200).json(stmt);
 });
 
@@ -58,8 +145,4 @@ app.delete("/app/delete/user/:id", (req, res) => {
 	const info = stmt.run(req.params.id);
 	res.status(200).json({"message" : info.changes+ " record deleted: ID " + req.params.id + " (200)"});
 });
-// Default response for any other request
-app.use(function(req, res){
-	res.json({"message":"Endpoint not found. (404)"});
-    res.status(404);
-});
+
