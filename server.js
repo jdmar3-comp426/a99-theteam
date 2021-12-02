@@ -14,6 +14,10 @@ var session = require('express-session');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+function getDateTime(){
+	let date = new Date(Date.now())
+	return 	`date: ${date.getDate()}/${date.getMonth()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
+}
 // Set server port
 var HTTP_PORT = 3000;
 // Start server
@@ -28,17 +32,6 @@ app.use(session({
 	cookie : {secure : false, maxAge: 100000},
 
 }))
-
-// app.use(function(req, res, next){
-// 	var err = req.session.error;
-// 	var msg = req.session.success;
-// 	delete req.session.error;
-// 	delete req.session.success;
-// 	res.locals.message = '';
-// 	if (err) res.locals.message = '<p class="msg error">' + err + '</p>';
-// 	if (msg) res.locals.message = '<p class="msg success">' + msg + '</p>';
-// 	next();
-//   });
 
 app.get('/', function(req, res){
 	console.log(req.session.user)
@@ -56,6 +49,7 @@ app.use(express.static('views'));
 app.post('/login', function (req, res){
 	let username = req.body.username
 	let password = req.body.password
+	console.log(getDateTime());
 
 	const stmt = db.prepare("SELECT * FROM userinfo WHERE user = ? AND pass = ?")
 	const out = stmt.get(username, md5(password))
@@ -64,6 +58,8 @@ app.post('/login', function (req, res){
 		console.log("SUCCESS");
 		req.session.regenerate( function() {
 			req.session.user = out
+			const stmt = db.prepare("INSERT INTO login_history (user_id, datetime) VALUES (?, ?)");
+			const info = stmt.run(out["id"], getDateTime());
 			res.redirect('/')
 			
 		})
@@ -116,8 +112,8 @@ app.post("/app/new/", (req, res) => {
 	res.status(201).json({"message" : info.changes + " record created: ID " + info.lastInsertRowid + " (201)"});
 });
 app.post("/app/new/score", (req, res) => {
-	const stmt = db.prepare("INSERT INTO scores (user_id, score) VALUES (?, ?)");
-	const info = stmt.run(req.body.user_id, req.body.score);
+	const stmt = db.prepare("INSERT INTO scores (user_id, score, datetime) VALUES (?, ?, ?)");
+	const info = stmt.run(req.body.user_id, req.body.score, getDateTime());
 	res.status(201).json({"message" : info.changes + " record created: ID " + info.lastInsertRowid + " (201)"});
 });
 
