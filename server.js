@@ -37,7 +37,7 @@ app.get('/', function(req, res){
 	console.log(req.session.user)
 	if(req.session.user){
 		console.log(req.session.user)
-		res.redirect('/index')
+		res.sendFile(__dirname + '/views/home.html')
 	}else{
 		res.sendFile(__dirname + '/views/homestarter.html')
 	}
