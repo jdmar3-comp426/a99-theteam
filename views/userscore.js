@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let profile = document.getElementById("profile");
         profile.innerHTML = "";
 
-        let elements = []; // we'll need created elements to update colors later on
         // create elements for each player
         for(let i=0; i<scores.length; i++) {
             let score = document.createElement("div");
@@ -28,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
             scoreRow.appendChild(score);
             scoreRow.appendChild(time);
             profile.appendChild(scoreRow);
-            elements.push(scoreRow);
         }
     }
 })
