@@ -170,3 +170,9 @@ app.get('/app/scores', (req, res) => {
 	const stmt = db.prepare("SELECT scores.id, user_id, score, datetime, user FROM scores, userinfo WHERE scores.user_id=userinfo.id ORDER BY score LIMIT 10").all()
 	res.status(200).json(stmt);
 })
+
+app.get('/app/userscores', (req, res) => {	
+	const stmt = db.prepare("SELECT * FROM scores WHERE user_id = ?").all(req.session.user["id"]);
+	res.status(200).json(stmt);
+	console.log(stmt)
+});

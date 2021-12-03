@@ -8,22 +8,20 @@
                 .then(data => document.getElementById("username").innerHTML = data["user"]);
         })
     </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
-
     <!-- Custom Css -->
     <link rel="stylesheet" href="profile.css">
-
     <!-- FontAwesome 5 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <script src="userscore.js" charset="utf-8"></script>
 </head>
 <body>
     <!-- Navbar top -->
     <div class="navbar-top">
         <div class="title">
-            <h1>Profile</h1>
+            <h1 id = "username">Profile</h1>
         </div>
 
         <!-- Navbar -->
@@ -40,21 +38,23 @@
 
     <!-- Main -->
     <div class="main">
-        <h2>IDENTITY AND SCORES</h2>
+        <h2>SCORES</h2>
         <div class="card">
             <div class="card-body">
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Name:</td>
-                            <td id="username">PLACE USERNAME HERE</td>
-                        </tr>
-                        <tr>
-                            <td>Scores:</td>
-                            <td>PLACE SCORES HERE</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div id="container">
+                    <div class="Scoreboard" id="profile">
+                        <h1 style = "text-align: center;">
+                            Recent Scores
+                        </h1>
+                        <h2 style = "text-align: center;">
+                        <div class="Score">0</div><div class="Date">500</div>
+                        <div class="Score">0</div><div class="Date">500</div>
+                        <div class="Score">0</div><div class="Date">500</div>
+                        <div class="Score">0</div><div class="Date">500</div>
+                        <div class="Score">0</div><div class="Date">500</div>
+                        </h2>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
