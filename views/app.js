@@ -343,10 +343,11 @@ function check_for_match(){
       document.body.style.background = 'green'
 
 
-      
+      console.log(time)
+      console.log(Math.round(time))
       const params = {
         "user_id": user["id"],
-        "score": time 
+        "score": Math.round(time)
       }
 
       fetch("http://localhost:3000/app/new/score", {
