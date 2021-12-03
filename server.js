@@ -107,6 +107,15 @@ app.get('/profile', function (req, res){
 	
 })
 
+app.get('/leaderboard', function (req, res){
+	if(req.session.user){
+		res.sendFile(__dirname + "/views/leaderboard.html")
+	}else{
+		res.redirect('/')
+	}
+	
+})
+
 // READ (HTTP method GET) at root endpoint /app/
 app.get("/app/", (req, res, next) => {
     res.json({"message":"Your API works! (200)"});
