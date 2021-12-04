@@ -35,9 +35,9 @@ app.use(session({
 }))
 
 app.get('/', function(req, res){
-	console.log(req.session.user)
+	// console.log(req.session.user)
 	if(req.session.user){
-		console.log(req.session.user)
+		// console.log(req.session.user)
 		res.sendFile(__dirname + '/views/home.html')
 	}else{
 		res.sendFile(__dirname + '/views/homestarter.html')
@@ -50,13 +50,11 @@ app.use(express.static('views'));
 app.post('/login', function (req, res){
 	let username = req.body.username
 	let password = req.body.password
-	console.log(getDateTime());
 
 	const stmt = db.prepare("SELECT * FROM userinfo WHERE user = ? AND pass = ?")
 	const out = stmt.get(username, md5(password))
 
 	if(out != undefined){
-		console.log("SUCCESS");
 		req.session.regenerate( function() {
 			req.session.user = out
 			const stmt = db.prepare("INSERT INTO login_history (user_id, datetime) VALUES (?, ?)");
@@ -170,5 +168,4 @@ app.get('/app/scores', (req, res) => {
 app.get('/app/userscores', (req, res) => {	
 	const stmt = db.prepare("SELECT * FROM scores WHERE user_id = ?").all(req.session.user["id"]);
 	res.status(200).json(stmt);
-	console.log(stmt)
 });
