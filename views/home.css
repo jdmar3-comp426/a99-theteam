@@ -6,9 +6,12 @@ button {
     border: 1px solid wheat;
     color: wheat;
     background-color: tomato;
-    padding: 10px 30px;
+    padding: 10px 40px;
     font-size: 20px;
     font-family: 'Copperplate', fantasy;
+    display: block;
+    width: 200px;
+    margin-top: 1vh;
     }
 
 body {
@@ -22,11 +25,17 @@ h1 {
     font-family: 'Copperplate', fantasy;
 }
 
-.homebuttons {
-    margin: 25vh auto;
-    width: 400px;
+.home {
+    margin: 15vh auto;
+    width: 300px;
+    height: 40vh;
     padding:100px;
 
     background-color: darkorange;
     box-shadow: 10px 10px chocolate, -1em -1em lightsalmon;
+}
+
+.flex-container > div{
+    display: flex;
+    flex-direction: column;
 }

@@ -37,7 +37,7 @@ app.get('/', function(req, res){
 	console.log(req.session.user)
 	if(req.session.user){
 		console.log(req.session.user)
-		res.redirect('/index')
+		res.sendFile(__dirname + '/views/home.html')
 	}else{
 		res.sendFile(__dirname + '/views/homestarter.html')
 	}
@@ -107,6 +107,15 @@ app.get('/profile', function (req, res){
 	
 })
 
+app.get('/leaderboard', function (req, res){
+	if(req.session.user){
+		res.sendFile(__dirname + "/views/leaderboard.html")
+	}else{
+		res.redirect('/')
+	}
+	
+})
+
 // READ (HTTP method GET) at root endpoint /app/
 app.get("/app/", (req, res, next) => {
     res.json({"message":"Your API works! (200)"});
@@ -128,7 +137,7 @@ app.post("/app/new/score", (req, res) => {
 
 // READ a list of all users (HTTP method GET) at endpoint /app/users/
 app.get("/app/users", (req, res) => {	
-	const stmt = db.prepare("SELECT * FROM userinfo").all();
+	const stmt = db.prepare("SELECT * FROM userinfo WHERE id > ? limit ?").all(0, 1);
 	res.status(200).json(stmt);
 });
 
@@ -155,4 +164,15 @@ app.get('/app/user/', (req, res) => {
 	const stmt = db.prepare("SELECT * FROM userinfo WHERE id=?");
 	const out = stmt.get(req.session.user["id"]);
 	res.status(200).json(out);
+});
+
+app.get('/app/scores', (req, res) => {
+	const stmt = db.prepare("SELECT scores.id, user_id, score, datetime, user FROM scores, userinfo WHERE scores.user_id=userinfo.id ORDER BY score LIMIT 10").all()
+	res.status(200).json(stmt);
+})
+
+app.get('/app/userscores', (req, res) => {	
+	const stmt = db.prepare("SELECT * FROM scores WHERE user_id = ?").all(req.session.user["id"]);
+	res.status(200).json(stmt);
+	console.log(stmt)
 });
