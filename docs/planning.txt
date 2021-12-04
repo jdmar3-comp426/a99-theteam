@@ -1,0 +1,22 @@
+Matching game where the score is how long it takes to match everything
+
+Screen 1: Login/Sign-Up Screen
+    a. If they login go to home page
+    b. If they signup bring them back to login
+
+Screen 2: Home Page (After logged in)
+    a. Play game
+    b. Profile
+    c. Leaderboard
+    d. Sign-Out
+
+Screen 3: Game
+Play game until all the matches are found, score is recorded automatically
+    a. Profile link
+    b. Leaderboard link
+
+Screen 4: Profile
+Shows recent scores with the time they happened
+
+Screen 5: Leaderboard
+Shows the top scores from all users
