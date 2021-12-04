@@ -42,15 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
    timer.innerHTML = `${minutes}:${seconds}`
    time ++;
 
-<<<<<<< HEAD
    if(time == 121){ // Stop the clock and signal the user lost, also disable all cards
      clearInterval(x)
     document.body.style.background = 'FireBrick'
-=======
-  //  if(time == 121){ // Stop the clock and signal the user lost, also disable all cards
-  //    clearInterval(x)
-  //   document.body.style.background = 'FireBrick'
->>>>>>> b0d2a2787cf8b47377fab16cc0421b5e1d95b63f
 
   //   var cards = document.querySelectorAll('img')
 
