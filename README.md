@@ -1,54 +1,37 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-f059dc9a6f8d3a56e377f745f24479a46679e63a5d9fe6f495e02850cd0d8118.svg)](https://classroom.github.com/online_ide?assignment_repo_id=6334787&assignment_repo_type=AssignmentRepo)
-# a99 Finally
+# Matching Game
 
-COMP426 final project template repository. All your code and documentation goes here. Change this text to be a brief description of your final project. Put the name in the header above. You will change everything below to be the main technical documentation, as outlined below.
+The goal of the game is to select 2 different cards which are tuened over. If the two cards that you select are matching when flipped, they are removed and counted as a match. The goal is to match all of the cards as fast as possible. Once every card is matched, the game is over and the score is recorded.
 
-## First steps
+## Installation Requirements
 
-Other steps that you will need to take after you have cloned this repository:
+The following is needed:
+1. A Web Browser
+2. VSCode
+3. NodeJS
 
-1. Choose and update the LICENSE file accordingly. 
-2. Edit this README.md file and use it as the main location of your technical documentation with links out to information contained under `/docs/`.
-3. Create a `/docs/` directory for more elaborate documentation of your API, planning notes, etc.
-4. Make sure that all of your team members have access to the repository as administrators.
-5. Create a project under the **Projects** tab. Use this to manage your planning. Create a To-do list, etc. Explore the tools available and user them to manage your project.
-7. Assign team roles and include a listing of those roles in this README.md file or in another file under `/docs/`.
-8. Then put your entire development workflow in this repository.
-9. Use **Pull requests** to propose changes and incorporate them into your code from various team members. 
-10. Use **Issues** to identify and track bugs and also to communicate about various aspects of the project.
+## Instructions
+1. First open this repository in VSCode
+2. Once it is opened, open up a terminal in the repository folder
+3. Now run `npm install` to install the needed dependencies
+4. From here run `npm start`
+5. Open up your web browser and go to http://localhost:3000
 
-## Team mangement
 
-Plan to meet with your team ASAP.
-Talk through identifying roles within your team.
+## Dependencies
 
-Try to figure out what each of you are good at/enjoy doing and try to work out roles that incorporate that.
+The following dependencies are used:
 
-Some basic roles you will want to consider:
+1. "better-sqlite3": "^7.4.5",
+2. "browser-sync": "^2.27.7",
+3. "cookie-parser": "^1.4.6",
+4. "ejs": "^3.1.6",
+5. "express": "^4.17.1",
+6. "express-session": "^1.17.2",
+7. "https": "^1.0.0",
+8. "md5": "^2.3.0",
+9. "node-fetch": "^3.1.0"
 
-1. A review manager - someone to review pull requests and merge or reject them and manage the related discussions
-2. A plan manager - someone to keep an eye on the overall plan and keep the project tab/to-do list up to date
-3. A documentation manager - someone to keep the documentation in order and identify what is missing and needs to be documented
-4. Roles for team members to take charge or different parts of the project. Possible roles:
-    1. Front end lead
-    2. Back end lead
-    3. Databse lead
-    4. Design lead
-    5. Etc.
+## Video Demo
 
-You will notice that there are more roles than people in your group.
-That is because you will all be doing a hybrid job of managing a thing while working on other things.
-
-## Check in with instructional staff
-
-Once all the groups are together, we'll assign each group to an LA to check in with as you progress through the project.
-
-We will post that so that your team can schedule a time for an initial check-in with your assigned LA. It would be a good idea also to add your LA to your repository.
-
-## Assignment instructions
-
-And that is about all you need to get started.
-
-All the rest of the assignment instructions are available at: https://comp426.johndmart.in/assignments/99
-
-Good skill, and have fun with this!
+Youtube: 
