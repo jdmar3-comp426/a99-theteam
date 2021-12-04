@@ -13,7 +13,6 @@
 | /                     | GET    |  If the user is signed in go to home screen, if not ask o login/create account           |
 | /login                | POST   |  Let the user input information to sign in, where it is validated                        |
 | /create_account       | POST   |  Create a new user in the database                                                       |
-| /app/new/             | POST   |  Create a new user in the database                                                       |
 | /app/new/score        | POST   |  Add a new score for a particular user                                                   |
 | /app/update/user/:id/ | PATCH  |  Update a certain user                                                                   |
 | /app/delete/user/:id  | DELETE |  Delete a certain user                                                                   |
