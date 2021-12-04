@@ -167,7 +167,7 @@ app.get('/app/user/', (req, res) => {
 });
 
 app.get('/app/scores', (req, res) => {
-	const stmt = db.prepare("SELECT scores.id, user_id, score, datetime, user FROM scores, userinfo WHERE scores.user_id=userinfo.id ORDER BY score LIMIT 10").all()
+	const stmt = db.prepare("SELECT scores.id, user_id, score, datetime, user FROM scores, userinfo WHERE scores.user_id=userinfo.id ORDER BY score LIMIT 5").all()
 	res.status(200).json(stmt);
 })
 

@@ -19,7 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let user;
 
-  fetchUser().then(data => user = data);
+  fetchUser().then(data => {
+    user = data;
+    create_board();
+  });
 
   /******** Establishing Timer ***************** */
   const starting_minutes = 0
@@ -343,8 +346,8 @@ function check_for_match(){
       document.body.style.background = 'green'
 
 
-      console.log(time)
-      console.log(Math.round(time))
+      // console.log(time)
+      // console.log(Math.round(time))
       const params = {
         "user_id": user["id"],
         "score": Math.round(time)
@@ -397,7 +400,6 @@ function flipcard(){
 
 
 
-create_board();
 
 }
 
