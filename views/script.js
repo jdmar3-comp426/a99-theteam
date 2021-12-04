@@ -54,11 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // updateLeaderboardView();
-    function randomize() {
-        for(var i=0; i<scores.length; i++) {
-            scores[i].score = Math.floor(Math.random() * (600 - 300 + 1)) + 300;
-        }
-        // when your data changes, call updateLeaderboardView
-        updateLeaderboardView();
-    }
+    // function randomize() {
+    //     for(var i=0; i<scores.length; i++) {
+    //         scores[i].score = Math.floor(Math.random() * (600 - 300 + 1)) + 300;
+    //     }
+    //     // when your data changes, call updateLeaderboardView
+    //     updateLeaderboardView();
+    // }
 })

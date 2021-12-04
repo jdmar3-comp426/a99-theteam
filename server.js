@@ -16,8 +16,9 @@ app.use(express.json());
 
 function getDateTime(){
 	let date = new Date(Date.now())
-	return 	`date: ${date.getDate()}/${date.getMonth()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
+	return `date: ${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes() < 10 ? "0" + date.getMinutes():  date.getMinutes()}`
 }
+
 // Set server port
 var HTTP_PORT = 3000;
 // Start server
@@ -29,7 +30,7 @@ app.use(session({
 	secret: 'secret',
 	resave: false,
 	saveUninitialized: false,
-	cookie : {secure : false, maxAge: 100000},
+	cookie : {secure : false, maxAge: 100000000},
 
 }))
 
@@ -137,7 +138,7 @@ app.post("/app/new/score", (req, res) => {
 
 // READ a list of all users (HTTP method GET) at endpoint /app/users/
 app.get("/app/users", (req, res) => {	
-	const stmt = db.prepare("SELECT * FROM userinfo WHERE id > ? limit ?").all(0, 1);
+	const stmt = db.prepare("SELECT * FROM userinfo").all();
 	res.status(200).json(stmt);
 });
 

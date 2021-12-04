@@ -4,15 +4,14 @@
 }
 
 #container {
-	width: 800px;
 	height: auto;
 }
 .row {
 	position: relative;
-	display: block;
-	width: 125%;
+	display: flex;
+    align-items: center;
 	height: 60px;
-	border-bottom: 1px solid #AFAFAF;
+	border-bottom: 1px solid #D1D5DB;
 }
 
 .score {
@@ -25,7 +24,8 @@
 .date {
 	position: relative;
 	display: inline-block;
-	width: 25%;
+    width: 25%;
+    font-size: 22px;
 }
 
 body {
@@ -38,7 +38,7 @@ body {
 .navbar-top {
     background-color: #fff;
     color: #333;
-    box-shadow: 0px 4px 8px 0px grey;
+    box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);
     height: 70px;
 }
 
@@ -73,11 +73,12 @@ body {
 
 /* Main */
 .main {
-    margin-top: 2%;
-    margin-left: 29%;
+    padding-top: 20px;
+    margin: auto;
     font-size: 28px;
     padding: 0 10px;
     width: 58%;
+    margin-top: 50px;
 }
 
 .main h2 {
@@ -90,10 +91,10 @@ body {
 .main .card {
     background-color: #fff;
     border-radius: 18px;
-    box-shadow: 1px 1px 8px 0 grey;
+    box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);
     height: auto;
     margin-bottom: 20px;
-    padding: 20px 0 20px 50px;
+    padding: 20px;
 }
 
 .main .card table {
