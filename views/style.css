@@ -3,6 +3,19 @@
     margin: 0;
     box-sizing: border-box;
   }
+  .indexbuttons {
+    display: flex;
+    margin-left: 25px;
+  }
+
+  .indexbuttons button {
+    cursor: pointer;
+  }
+
+  .indexbuttons a {
+    text-decoration: none;
+  }
+
   #yousaf{
     border: 1px solid wheat;
     color: wheat;
@@ -26,13 +39,20 @@
   
   
 .reset{
-  margin-left: 45%;
-  margin-top:18%;
+  margin: auto;
+  display: flex;
+  margin-top: 50px;
   padding: 10px 20px;
-  border-radius: 29px;
+  border-radius: 15px;
+  justify-content: center;
   border-color:transparent;
+  width: 100px;
+  align-items: center;;
+  text-align: center;
   color:white;
-  background-color: #FEBE10
+  background-color: #FEBE10;
+  margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .reset:active{
@@ -40,15 +60,23 @@
 }
 
   .board {
-    width: 500px;
-    height: 400px;
+    width: 425px;
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
     position:relative;
 
     /*Center the board here */
-    top: 5%;
-    left: 35%;
+    margin: auto;;
+  }
+
+  .board img {
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
   }
  
   img{ /* Adding border and spacing on cards*/

@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
 
   <title>Memory Game</title>
 
   <link rel="stylesheet" href="style.css">
-  <script src="app.js" charset="utf-8" ></script>
+  <script src="app.js" charset="utf-8"></script>
 </head>
+
 <body>
-  
-  <p id = "countdown">0:00</p>
+
+  <p id="countdown">0:00</p>
   <p>Match the Pairs as Quickly as Possible</p>
-  <a href="/profile" class="button"><button id="yousaf" type="button" class="buttons">Profile</button></a>
-  <a href="/leaderboard"><button id="yousaf" type="button" class="buttons">Leadboard</button></a>
+  <div class="indexbuttons"><a href="/profile" class="button"><button id="yousaf" type="button"
+        class="buttons">Profile</button></a></div>
+  <div class="indexbuttons"><a href="/leaderboard"><button id="yousaf" type="button"
+        class="buttons">Leadboard</button></a></div>
 
 
-  <div class = "board">
+  <div class="board">
 
   </div>
+  <div>
+    <button onclick="window.location.href='/index'" class="reset"> Reset </button>
+  </div>
 
-  <button onclick = "window.location.href='/index'" class = "reset"> Reset </button>
-  
 </body>
+
 </html>

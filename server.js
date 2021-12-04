@@ -16,8 +16,9 @@ app.use(express.json());
 
 function getDateTime(){
 	let date = new Date(Date.now())
-	return 	`date: ${date.getDate()}/${date.getMonth()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
+	return `date: ${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes() < 10 ? "0" + date.getMinutes():  date.getMinutes()}`
 }
+
 // Set server port
 var HTTP_PORT = 3000;
 // Start server
@@ -29,14 +30,14 @@ app.use(session({
 	secret: 'secret',
 	resave: false,
 	saveUninitialized: false,
-	cookie : {secure : false, maxAge: 100000},
+	cookie : {secure : false, maxAge: 100000000},
 
 }))
 
 app.get('/', function(req, res){
-	console.log(req.session.user)
+	// console.log(req.session.user)
 	if(req.session.user){
-		console.log(req.session.user)
+		// console.log(req.session.user)
 		res.sendFile(__dirname + '/views/home.html')
 	}else{
 		res.sendFile(__dirname + '/views/homestarter.html')
@@ -49,13 +50,11 @@ app.use(express.static('views'));
 app.post('/login', function (req, res){
 	let username = req.body.username
 	let password = req.body.password
-	console.log(getDateTime());
 
 	const stmt = db.prepare("SELECT * FROM userinfo WHERE user = ? AND pass = ?")
 	const out = stmt.get(username, md5(password))
 
 	if(out != undefined){
-		console.log("SUCCESS");
 		req.session.regenerate( function() {
 			req.session.user = out
 			const stmt = db.prepare("INSERT INTO login_history (user_id, datetime) VALUES (?, ?)");
@@ -132,7 +131,7 @@ app.post("/app/new/score", (req, res) => {
 
 // READ a list of all users (HTTP method GET) at endpoint /app/users/
 app.get("/app/users", (req, res) => {	
-	const stmt = db.prepare("SELECT * FROM userinfo WHERE id > ? limit ?").all(0, 1);
+	const stmt = db.prepare("SELECT * FROM userinfo").all();
 	res.status(200).json(stmt);
 });
 
@@ -169,5 +168,4 @@ app.get('/app/scores', (req, res) => {
 app.get('/app/userscores', (req, res) => {	
 	const stmt = db.prepare("SELECT * FROM scores WHERE user_id = ?").all(req.session.user["id"]);
 	res.status(200).json(stmt);
-	console.log(stmt)
 });
