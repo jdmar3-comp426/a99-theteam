@@ -10,6 +10,8 @@ button {
     font-size: 20px;
     font-family: 'Copperplate', fantasy;
     display: block;
+    width: 200px;
+    margin-top: 1vh;
     }
 
 body {
@@ -23,7 +25,7 @@ h1 {
     font-family: 'Copperplate', fantasy;
 }
 
-.homebuttons {
+.home {
     margin: 15vh auto;
     width: 300px;
     height: 40vh;
@@ -31,4 +33,9 @@ h1 {
 
     background-color: darkorange;
     box-shadow: 10px 10px chocolate, -1em -1em lightsalmon;
+}
+
+.flex-container > div{
+    display: flex;
+    flex-direction: column;
 }
