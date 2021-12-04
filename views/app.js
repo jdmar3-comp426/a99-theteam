@@ -10,10 +10,19 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
- 
+  async function fetchUser(){
+    const response = await fetch("http://localhost:3000/app/user/")
+    const user = await response.json()
+  
+    return user
+  }
+
+  let user;
+
+  fetchUser().then(data => user = data);
 
   /******** Establishing Timer ***************** */
-  const starting_minutes = 3
+  const starting_minutes = 0
 
   let time = starting_minutes * 60 // Total Seconds for our Timer
 
@@ -31,19 +40,19 @@ document.addEventListener('DOMContentLoaded', () => {
    }
 
    timer.innerHTML = `${minutes}:${seconds}`
-   time --;
+   time ++;
 
-   if(time == -1){ // Stop the clock and signal the user lost, also disable all cards
-     clearInterval(x)
-    document.body.style.background = 'FireBrick'
+  //  if(time == 121){ // Stop the clock and signal the user lost, also disable all cards
+  //    clearInterval(x)
+  //   document.body.style.background = 'FireBrick'
 
-    var cards = document.querySelectorAll('img')
+  //   var cards = document.querySelectorAll('img')
 
-    for(let i = 0; i < cards.length; i++){
-     cards[i].removeEventListener('click', flipcard)
-    }
+  //   for(let i = 0; i < cards.length; i++){
+  //    cards[i].removeEventListener('click', flipcard)
+  //   }
 
-   }
+  //  }
 
  }
  /*************************************************************** */
@@ -315,6 +324,7 @@ function create_board(){ // Create our board with initial cards! And give each c
 
 let number_solved = 0;
 
+
 function check_for_match(){
   var cards = document.querySelectorAll('img') //List of all our cards we created for our board
   const cardoneID = TwoCardsSelectedID[0]
@@ -331,6 +341,23 @@ function check_for_match(){
 
     if(number_solved == 24){
       document.body.style.background = 'green'
+
+
+      console.log(time)
+      console.log(Math.round(time))
+      const params = {
+        "user_id": user["id"],
+        "score": Math.round(time)
+      }
+
+      fetch("http://localhost:3000/app/new/score", {
+        method: "POST",
+        headers: {
+          'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(params)
+      })
+      
       clearInterval(x) // Stop Clock if puzzle is solved!
     }
 
@@ -363,7 +390,7 @@ function flipcard(){
   this.setAttribute('src', deckofcards[cardId].img) // Will set the image of card we clicked immediately to the id of card we selected
 
   if(TwoCardsSelected.length == 2){
-    setTimeout(check_for_match, 700)
+    setTimeout(check_for_match, 250) // Changing this line of code fixed bugging.
   }
 }
 
