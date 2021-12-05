@@ -34,4 +34,4 @@ The following dependencies are used:
 
 ## Video Demo
 
-Youtube: 
+Youtube: https://youtu.be/szSQ3vjUMpY
